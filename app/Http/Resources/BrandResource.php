@@ -8,16 +8,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class BrandResource extends JsonResource
 {
     /**
-     * id brand
-     */
-    public $id;
-
-    /**
-     * name brand
-     */
-    public $name;
-
-    /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>
@@ -25,7 +15,9 @@ class BrandResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'   => $this->id,
+            /** @phpstan-ignore-next-line */
+            'id' => $this->id,
+            /** @phpstan-ignore-next-line */
             'name' => $this->name,
         ];
     }
