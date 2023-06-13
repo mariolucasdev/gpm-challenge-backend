@@ -32,14 +32,17 @@ jobs:
           mkdir -p database
           touch database/database.sqlite
 
-      - name: Migrate database
-        run: php artisan migrate --seed
-
       - name: Installing packages
         run: npm install
 
       - name: Build assets
         run: npm run build
+
+      - name: Migrate database
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate --seed
 
       - name: Running tests - PHPUnit
         env:
