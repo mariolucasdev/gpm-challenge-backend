@@ -38,6 +38,12 @@ jobs:
       - name: Build assets
         run: npm run build
 
+      - name: Migrate database
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate --seed
+
       - name: Running tests - PHPUnit
         env:
           DB_CONNECTION: sqlite

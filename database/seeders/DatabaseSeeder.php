@@ -14,9 +14,18 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $brands = [
+            "Electrolux",
+            "Brastemp",
+            "Fischer",
+            "Samsung",
+            "LG",
+        ];
+
+        foreach($brands as $brand) {
+            \App\Models\Brand::factory()->create([
+                'name' => $brand,
+            ]);
+        }
     }
 }
