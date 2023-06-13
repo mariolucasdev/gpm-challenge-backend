@@ -9,17 +9,13 @@ class BrandResource extends JsonResource
 {
     /**
      * id brand
-     *
-     * @var integer
      */
-    public int $id;
+    public $id;
 
     /**
      * name brand
-     *
-     * @var string
      */
-    public string $name;
+    public $name;
 
     /**
      * Transform the resource into an array.
