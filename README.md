@@ -19,19 +19,20 @@
 
 ### GET - api/brands
 
-```php
+```javascript
 // Headers
 // Content-Type: application/json
 // Accept: application/json
 
 // Retorno
 {
-	"data": [
-		{
-			"id": 1,
-			"name": "Electrolux"
-		},
-        ...
+    "data": [
+        {
+            "id": 1,
+            "name": "Electrolux"
+        },
+        {...},
+        {...}
     ]
 }
 ```
@@ -44,7 +45,7 @@
 
 ### POST - api/appliance
 
-```php
+```javascript
 // Headers
 // Content-Type: application/json
 // Accept: application/json
@@ -75,21 +76,22 @@
 
 ### GET - api/appliance
 
-```php
+```javascript
 // Headers
 // Accept: application/json
 
 // Retorno
 [
-	{
-		"id": 1,
-		"name": "Geladeira Frost Free",
-		"description": "Produto versátil.",
-		"eletric_tension": "220v",
-		"brand_id": 1,
-		"created_at": "2023-06-14T00:59:21.000000Z",
-		"updated_at": "2023-06-14T00:59:21.000000Z"
-	},
-	...
+    {
+        "id": 1,
+        "name": "Geladeira Frost Free",
+        "description": "Produto versátil.",
+        "eletric_tension": "220v",
+        "brand_id": 1,
+        "created_at": "2023-06-14T00:59:21.000000Z",
+        "updated_at": "2023-06-14T00:59:21.000000Z"
+    },
+    {...},
+    {...}
 ]
 ```
