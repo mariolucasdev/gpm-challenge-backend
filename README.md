@@ -8,15 +8,15 @@
     <img src="https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml/badge.svg?branch=develop" alt="develop">
 </div>
 
-## Api Endoints
+# Api Endoints
 
-## Marcas
+## **Marcas**
+
+## _GET - api/brands_
 
 | Método | Endpoint   | Parâmetros | Descrição              | Retorno |
 | ------ | ---------- | ---------- | ---------------------- | ------- |
 | `GET`  | api/brands | ---        | Busca lista de marcas. | 200     |
-
-### GET - api/brands
 
 ```javascript
 // Headers
@@ -36,13 +36,13 @@
 }
 ```
 
-## Eletrodomésticos
+## **Eletrodomésticos**
+
+## _POST - api/appliance_
 
 | Método | Endpoint      | Parâmetros                                   | Descrição              | Status     |
 | ------ | ------------- | -------------------------------------------- | ---------------------- | ---------- |
 | `POST` | api/appliance | name, description, eletric_tension, brand_id | Busca lista de marcas. | 201 or 422 |
-
-### POST - api/appliance
 
 ```javascript
 // Headers
@@ -69,11 +69,11 @@
 }
 ```
 
+## _GET - api/appliance_
+
 | Método | Endpoint      | Parâmetros | Descrição                     | Status |
 | ------ | ------------- | ---------- | ----------------------------- | ------ |
 | `GET`  | api/appliance | ------     | Listagem de Eletrodomésticos. | 200    |
-
-### GET - api/appliance
 
 ```javascript
 // Headers
@@ -95,11 +95,11 @@
 ]
 ```
 
+## _PUT - api/appliance/:id_
+
 | Método | Endpoint          | Parâmetros                                   | Descrição               | Status          |
 | ------ | ----------------- | -------------------------------------------- | ----------------------- | --------------- |
 | `PUT`  | api/appliance/:id | name, description, eletric_tension, brand_id | Editar eletrodoméstico. | 200, 404 or 422 |
-
-### PUT - api/appliance/:id
 
 ```javascript
 // Headers
@@ -125,3 +125,9 @@
 	"id": 8
 }
 ```
+
+## _DELETE - api/appliance/:id_
+
+| Método   | Endpoint          | Parâmetros | Descrição                    | Status     |
+| -------- | ----------------- | ---------- | ---------------------------- | ---------- |
+| `DELETE` | api/appliance/:id | ------     | Excluir um Eletrodomésticos. | 200 ou 404 |
