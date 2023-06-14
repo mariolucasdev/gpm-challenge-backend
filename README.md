@@ -12,11 +12,11 @@
 
 ## **Marcas**
 
-## _GET - api/brands_
-
 | Método | Endpoint   | Parâmetros | Descrição              | Retorno |
 | ------ | ---------- | ---------- | ---------------------- | ------- |
 | `GET`  | api/brands | ---        | Busca lista de marcas. | 200     |
+
+## _GET - api/brands_
 
 ```javascript
 // Headers
@@ -38,11 +38,15 @@
 
 ## **Eletrodomésticos**
 
-## _POST - api/appliance_
+| Método   | Endpoint          | Parâmetros                                   | Descrição                         | Status          |
+| -------- | ----------------- | -------------------------------------------- | --------------------------------- | --------------- |
+| `POST`   | api/appliance     | name, description, eletric_tension, brand_id | Busca lista de marcas.            | 201 or 422      |
+| `GET`    | api/appliance     | ------                                       | Listagem de Eletrodomésticos.     | 200             |
+| `GET`    | api/appliance/:id | ------                                       | Exibir 1 eletrodoméstico pelo id. | 200 ou 404      |
+| `PUT`    | api/appliance/:id | name, description, eletric_tension, brand_id | Editar eletrodoméstico.           | 200, 404 or 422 |
+| `DELETE` | api/appliance/:id | ------                                       | Excluir um Eletrodomésticos.      | 200 ou 404      |
 
-| Método | Endpoint      | Parâmetros                                   | Descrição              | Status     |
-| ------ | ------------- | -------------------------------------------- | ---------------------- | ---------- |
-| `POST` | api/appliance | name, description, eletric_tension, brand_id | Busca lista de marcas. | 201 or 422 |
+## _POST - api/appliance_
 
 ```javascript
 // Headers
@@ -71,10 +75,6 @@
 
 ## _GET - api/appliance_
 
-| Método | Endpoint      | Parâmetros | Descrição                     | Status |
-| ------ | ------------- | ---------- | ----------------------------- | ------ |
-| `GET`  | api/appliance | ------     | Listagem de Eletrodomésticos. | 200    |
-
 ```javascript
 // Headers
 // Accept: application/json
@@ -95,11 +95,25 @@
 ]
 ```
 
-## _PUT - api/appliance/:id_
+## _GET - api/appliance/:id_
 
-| Método | Endpoint          | Parâmetros                                   | Descrição               | Status          |
-| ------ | ----------------- | -------------------------------------------- | ----------------------- | --------------- |
-| `PUT`  | api/appliance/:id | name, description, eletric_tension, brand_id | Editar eletrodoméstico. | 200, 404 or 422 |
+```javascript
+// Headers
+// Accept: application/json
+
+// Retorno
+{
+	"id": 30,
+	"name": "Geladeira Frost Free",
+	"description": "Produto versátil.",
+	"eletric_tension": "220v",
+	"brand_id": 1,
+	"created_at": "2023-06-14T03:14:03.000000Z",
+	"updated_at": "2023-06-14T03:14:03.000000Z"
+}
+```
+
+## _PUT - api/appliance/:id_
 
 ```javascript
 // Headers
@@ -125,9 +139,3 @@
 	"id": 8
 }
 ```
-
-## _DELETE - api/appliance/:id_
-
-| Método   | Endpoint          | Parâmetros | Descrição                    | Status     |
-| -------- | ----------------- | ---------- | ---------------------------- | ---------- |
-| `DELETE` | api/appliance/:id | ------     | Excluir um Eletrodomésticos. | 200 ou 404 |
