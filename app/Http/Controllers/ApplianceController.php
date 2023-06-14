@@ -34,11 +34,16 @@ class ApplianceController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show appliance
+     *
+     * @param string $id
+     * @return JsonResponse
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        $appliance = Appliance::findOrFail($id);
+
+        return response()->json($appliance, 200);
     }
 
     /**

@@ -33,7 +33,6 @@ class ApplianceTest extends TestCase
     public function test_missed_name_field_required_expect_error_422_and_correctly_message(): void
     {
         $response = $this->json('POST', 'api/appliance', [
-            // 'name'            => 'Geladeira Frost Free',
             'description'     => 'Produto versátil.',
             'eletric_tension' => '220v',
             'brand_id'        => 1,
@@ -41,6 +40,34 @@ class ApplianceTest extends TestCase
 
         $response->assertStatus(422);
         $response->assertUnprocessable();
+    }
+
+    public function test_show_appliance_expect_status_code_200_and_correctly_json_structure(): void
+    {
+        $appliance = Appliance::latest()->first();
+
+        $response = $this->get('api/appliance/' . $appliance->id);
+
+        $response->assertStatus(200);
+
+        $response
+            ->assertJson(
+                fn (AssertableJson $json) => $json
+                    ->where('id', $appliance->id)
+                    ->where('name', $appliance->name)
+                    ->where('description', $appliance->description)
+                    ->where('eletric_tension', $appliance->eletric_tension)
+                    ->where('brand_id', $appliance->brand_id)
+                    ->etc()
+            );
+
+    }
+
+    public function test_show_not_exists_appliance_expect_status_code_404(): void
+    {
+        $response = $this->get('api/appliance/100000');
+
+        $response->assertStatus(404);
     }
 
     public function test_list_appliances_expect_status_code_200(): void
