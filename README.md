@@ -95,3 +95,34 @@
     {...}
 ]
 ```
+
+| Método | Endpoint          | Parâmetros                                   | Descrição               | Status          |
+| ------ | ----------------- | -------------------------------------------- | ----------------------- | --------------- |
+| `PUT`  | api/appliance/:id | name, description, eletric_tension, brand_id | Editar eletrodoméstico. | 200, 404 or 422 |
+
+### PUT - api/appliance/:id
+
+```javascript
+// Headers
+// Content-Type: application/json
+// Accept: application/json
+
+// Envio
+{
+	"name" : "Cooktop",
+	"description": "05 bocas.",
+	"eletric_tension" : "110v",
+	"brand_id" : 1
+}
+
+// Retorno
+{
+	"name": "Cooktop",
+	"description": "05 bocas.",
+	"eletric_tension": "110v",
+	"brand_id": 1,
+	"updated_at": "2023-06-14T01:17:33.000000Z",
+	"created_at": "2023-06-14T01:17:33.000000Z",
+	"id": 8
+}
+```
