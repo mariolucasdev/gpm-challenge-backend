@@ -6,7 +6,7 @@
 
 ## 💻 Sobre o projeto
 
-O GPM Challenge é um projeto em laravel com o objetivo de prover um api para aplicação com capacidade de lista, criar atualizar e excluir dados, fornecendo endpoints e estrutura de dados adequadas. Todas as operações são seguramente persistidas em um banco de dados relacional.
+O GPM Challenge é um projeto em laravel com o objetivo de prover uma api para com recursos de listagem, criação atualização e exclusão de dados, fornecendo endpoints, estrutura de dados e respostas adequadas. Todas as operações são seguramente persistidas em um banco de dados relacional.
 
 ## ⚠️ Requisitos do Projeto
 
