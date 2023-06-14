@@ -18,7 +18,7 @@ O GPM Challenge é um projeto em laravel com o objetivo de prover um api para ap
 
 ## 🧰 Ferramenta para Teste de Requisições HTTP
 
-Recomendamos o Insômnia, no projeto você encontrará um arquivo das requisições já montado, pronto para ser importado e utilizado direto dentro do insômnia.
+Recomendamos o Insomnia, no projeto você encontrará um arquivo chamado **insomnia_setup.json** nele estão contidas as configuração de exemplo das requisições já montado, pronto para ser importado e utilizado direto dentro do insomnia.
 
 ## 🏗️ Instalação
 
