@@ -1,14 +1,85 @@
-<h1 align="center"> 
-    GPM Challenge
+# GPM Challenge
 
-</h1>
+[![CI](https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml/badge.svg?branch=main&event=pull_request)](https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml)
 
-<div align="center">
-    <img src="https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml/badge.svg?branch=main" alt="main">
-    <img src="https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml/badge.svg?branch=develop" alt="develop">
-</div>
+[![CI](https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml/badge.svg?branch=develop&event=pull_request)](https://github.com/mariolucasdev/gpm-challenge-backend/actions/workflows/laravel.yml)
 
-# Api Endoints
+## 💻 Sobre o projeto
+
+O GPM Challenge é um projeto em laravel com o objetivo de prover um api para aplicação com capacidade de lista, criar atualizar e excluir dados, fornecendo endpoints e estrutura de dados adequadas. Todas as operações são seguramente persistidas em um banco de dados relacional.
+
+## ⚠️ Requisitos do Projeto
+
+-   Laravel 10
+-   PHP ^8.1
+-   MySQL ^5.6
+-   NodeJS ^18.16
+-   Composer ^2.5
+
+## 🧰 Ferramenta para Teste de Requisições HTTP
+
+Recomendamos o Insômnia, no projeto você encontrará um arquivo das requisições já montado, pronto para ser importado e utilizado direto dentro do insômnia.
+
+## 🏗️ Instalação
+
+### Clone o repositório para o seu computador e acesse a pasta do projeto:
+
+```
+//clone
+git clone https://github.com/mariolucasdev/gpm-challenge-backend.git
+
+//acesso a pasta
+cd gpm-challenge-backend
+```
+
+### Renomeie o arquivo .env.example para .env na raiz do projeto e configure seu banco de dados:
+
+Crie um bando de dados, para menos configurações nomeie seu banco de dados como _gpm_challenge_backend_ e conclua as configurações do seu .env.
+
+```php
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gpm_challenge_backend //nome do seu banco de dados
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Instale as dependências do composer:
+
+```
+composer install
+ou
+composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+```
+
+### Gere sua chave da aplicação:
+
+```php
+php artisan key:generate
+```
+
+### Instale as dependências package.json
+
+```
+npm install
+```
+
+### Execute as migrações do banco de dados e os seeders:
+
+```
+php artisan migrate --seed
+```
+
+### Execute o servidor:
+
+```
+php artisan serve
+```
+
+Seguido todo os passos agora você conseguirá acessar os recursos da api, através dos enpoints abaixo.
+
+## Api Endoints
 
 ## **Marcas**
 
@@ -58,18 +129,19 @@
 	"name" : "Geladeira Frost Free",
 	"description": "Produto versátil.",
 	"eletric_tension" : "220v",
-	"brand_id" : 1
+	"brand_id" : 2
 }
 
 // Retorno
 {
+	"id": 72,
 	"name": "Geladeira Frost Free",
 	"description": "Produto versátil.",
 	"eletric_tension": "220v",
-	"brand_id": 1,
-	"updated_at": "2023-06-14T01:17:33.000000Z",
-	"created_at": "2023-06-14T01:17:33.000000Z",
-	"id": 8
+	"brand_id": 2,
+	"created_at": "2023-06-14 17:33:11",
+	"updated_at": "2023-06-14 17:33:11",
+	"brand": "Brastemp"
 }
 ```
 
@@ -82,14 +154,15 @@
 // Retorno
 [
     {
-        "id": 1,
-        "name": "Geladeira Frost Free",
-        "description": "Produto versátil.",
-        "eletric_tension": "220v",
-        "brand_id": 1,
-        "created_at": "2023-06-14T00:59:21.000000Z",
-        "updated_at": "2023-06-14T00:59:21.000000Z"
-    },
+		"id": 42,
+		"name": "Geladeira Frost Free",
+		"description": "Produto versátil.",
+		"eletric_tension": "220v",
+		"brand_id": 1,
+		"created_at": "2023-06-14 10:43:50",
+		"updated_at": "2023-06-14 10:43:50",
+		"brand": "Electrolux"
+	},
     {...},
     {...}
 ]
@@ -103,13 +176,14 @@
 
 // Retorno
 {
-	"id": 30,
+	"id": 68,
 	"name": "Geladeira Frost Free",
 	"description": "Produto versátil.",
 	"eletric_tension": "220v",
-	"brand_id": 1,
-	"created_at": "2023-06-14T03:14:03.000000Z",
-	"updated_at": "2023-06-14T03:14:03.000000Z"
+	"brand_id": 2,
+	"created_at": "2023-06-14 14:15:44",
+	"updated_at": "2023-06-14 14:15:44",
+	"brand": "Brastemp"
 }
 ```
 
@@ -125,17 +199,42 @@
 	"name" : "Cooktop",
 	"description": "05 bocas.",
 	"eletric_tension" : "110v",
-	"brand_id" : 1
+	"brand_id" : 5
 }
 
 // Retorno
 {
+	"id": 67,
 	"name": "Cooktop",
 	"description": "05 bocas.",
 	"eletric_tension": "110v",
-	"brand_id": 1,
-	"updated_at": "2023-06-14T01:17:33.000000Z",
-	"created_at": "2023-06-14T01:17:33.000000Z",
-	"id": 8
+	"brand_id": 5,
+	"created_at": "2023-06-14 14:14:32",
+	"updated_at": "2023-06-14 14:14:50",
+	"brand": "LG"
 }
+```
+
+## _DELETE - api/appliance/:id_
+
+receberá um status 200 caso tenha corrido tudo bem ou 404 caso não exista o id no banco de dados.
+
+## 🧪 Execução de Testes
+
+### Teste de unidade:
+
+```
+php artisan test --parallel
+```
+
+### Teste de análise estática
+
+```
+vendor/bin/phpstan analyse
+```
+
+### Teste de estilo de código
+
+```
+vendor/bin/pint --test
 ```
