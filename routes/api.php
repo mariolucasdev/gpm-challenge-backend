@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplianceController;
 use App\Http\Resources\BrandResource;
 use App\Models\Brand;
 use Illuminate\Http\Request;
@@ -23,3 +24,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/brands', function () {
     return BrandResource::collection(Brand::all());
 });
+
+Route::resource('/appliance', ApplianceController::class);
