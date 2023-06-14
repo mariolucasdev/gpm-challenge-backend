@@ -42,4 +42,10 @@ class ApplianceTest extends TestCase
         $response->assertStatus(422);
         $response->assertUnprocessable();
     }
+
+    public function test_list_appliances_expect_status_code_200(): void
+    {
+        $response = $this->get('api/appliance');
+        $response->assertOk();
+    }
 }

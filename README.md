@@ -11,7 +11,7 @@
 
 ## Api Endoints
 
-## Brands
+## Marcas
 
 | Método | Endpoint   | Parâmetros | Descrição              | Retorno |
 | ------ | ---------- | ---------- | ---------------------- | ------- |
@@ -19,7 +19,7 @@
 
 ### GET - api/brands
 
-```json
+```php
 // Headers
 // Content-Type: application/json
 // Accept: application/json
@@ -36,7 +36,7 @@
 }
 ```
 
-## Home Appliances
+## Eletrodomésticos
 
 | Método | Endpoint      | Parâmetros                                   | Descrição              | Status     |
 | ------ | ------------- | -------------------------------------------- | ---------------------- | ---------- |
@@ -44,7 +44,7 @@
 
 ### POST - api/appliance
 
-```json
+```php
 // Headers
 // Content-Type: application/json
 // Accept: application/json
@@ -52,9 +52,9 @@
 // Envio
 {
 	"name" : "Geladeira Frost Free",
-    "description": "Produto versátil.",
-    "eletric_tension" : "220v",
-    "brand_id" : 1
+	"description": "Produto versátil.",
+	"eletric_tension" : "220v",
+	"brand_id" : 1
 }
 
 // Retorno
@@ -67,4 +67,29 @@
 	"created_at": "2023-06-14T01:17:33.000000Z",
 	"id": 8
 }
+```
+
+| Método | Endpoint      | Parâmetros | Descrição                     | Status |
+| ------ | ------------- | ---------- | ----------------------------- | ------ |
+| `GET`  | api/appliance | ------     | Listagem de Eletrodomésticos. | 200    |
+
+### GET - api/appliance
+
+```php
+// Headers
+// Accept: application/json
+
+// Retorno
+[
+	{
+		"id": 1,
+		"name": "Geladeira Frost Free",
+		"description": "Produto versátil.",
+		"eletric_tension": "220v",
+		"brand_id": 1,
+		"created_at": "2023-06-14T00:59:21.000000Z",
+		"updated_at": "2023-06-14T00:59:21.000000Z"
+	},
+	...
+]
 ```

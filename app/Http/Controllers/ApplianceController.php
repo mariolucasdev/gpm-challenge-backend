@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreApplianceRequest;
 use App\Models\Appliance;
-use Illuminate\Http\Request;
+use Illuminate\Http\{JsonResponse, Request};
 
 class ApplianceController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * List appliances json
+     *
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $appliance = Appliance::all();
+
+        return response()->json($appliance, 200);
     }
 
     /**
@@ -24,10 +28,13 @@ class ApplianceController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreApplianceRequest $request)
+   /**
+    * Store appliance
+    *
+    * @param StoreApplianceRequest $request
+    * @return JsonResponse
+    */
+    public function store(StoreApplianceRequest $request): JsonResponse
     {
         $appliance = Appliance::create($request->all());
 
