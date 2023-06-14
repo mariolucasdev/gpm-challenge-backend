@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\{RefreshDatabase, WithFaker};
+use App\Models\Appliance;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
@@ -51,7 +51,9 @@ class ApplianceTest extends TestCase
 
     public function test_update_appliance_expect_status_code_200(): void
     {
-        $response = $this->json('PUT', 'api/appliance/1', [
+        $appliance = Appliance::first();
+
+        $response = $this->json('PUT', 'api/appliance/' . $appliance->id, [
             'name'            => 'Cooktop 05 bocas',
             'description'     => 'Elétrico.',
             'eletric_tension' => '110v',
@@ -69,7 +71,6 @@ class ApplianceTest extends TestCase
                     ->where('brand_id', 2)
                     ->etc()
             );
-
     }
 
     public function test_fail_update_not_exists_appliance_expect_status_code_404(): void
@@ -80,6 +81,25 @@ class ApplianceTest extends TestCase
             'eletric_tension' => '110v',
             'brand_id'        => 2,
         ]);
+
+        $response->assertStatus(404);
+    }
+
+    public function test_destroy_appliance_expect_code_200(): void
+    {
+        $appliance = Appliance::first();
+        $response  = $this->delete('api/appliance/' . $appliance->id);
+
+        $response->assertOk();
+
+        $response = $this->delete('api/appliance/' . $appliance->id);
+
+        $response->assertStatus(404);
+    }
+
+    public function test_destroy_not_exist_appliance_expect_code_404(): void
+    {
+        $response = $this->delete('api/appliance/1000000');
 
         $response->assertStatus(404);
     }

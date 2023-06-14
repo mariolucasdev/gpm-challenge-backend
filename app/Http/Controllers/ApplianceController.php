@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreApplianceRequest;
 use App\Models\Appliance;
-use Illuminate\Http\{JsonResponse, Request};
+use Illuminate\Http\JsonResponse;
 
 class ApplianceController extends Controller
 {
@@ -57,10 +57,16 @@ class ApplianceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove appliance
+     *
+     * @param string $id
+     * @return JsonResponse
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        $appliance = Appliance::findOrFail($id);
+        $appliance->delete();
+
+        return response()->json([], 200);
     }
 }
