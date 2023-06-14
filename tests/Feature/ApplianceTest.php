@@ -46,7 +46,7 @@ class ApplianceTest extends TestCase
     {
         $appliance = Appliance::latest()->first();
 
-        $response = $this->get('api/appliance/' . $appliance->id);
+        $response = $this->json('GET', 'api/appliance/' . $appliance->id);
 
         $response->assertStatus(200);
 

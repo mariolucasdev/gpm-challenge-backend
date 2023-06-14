@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreApplianceRequest;
 use App\Models\Appliance;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class ApplianceController extends Controller
 {
@@ -15,9 +16,12 @@ class ApplianceController extends Controller
      */
     public function index(): JsonResponse
     {
-        $appliance = Appliance::all();
+        $appliances = DB::table('appliances')
+            ->join('brands', 'appliances.brand_id', '=', 'brands.id')
+            ->select('appliances.*', 'brands.name as brand')
+            ->get();
 
-        return response()->json($appliance, 200);
+        return response()->json($appliances, 200);
     }
 
    /**
@@ -30,7 +34,13 @@ class ApplianceController extends Controller
     {
         $appliance = Appliance::create($request->all());
 
-        return response()->json($appliance, 201);
+        $appliance = DB::table('appliances')
+            ->join('brands', 'appliances.brand_id', '=', 'brands.id')
+            ->select('appliances.*', 'brands.name as brand')
+            ->where('appliances.id', '=', $appliance->id)
+            ->get();
+
+        return response()->json($appliance->first(), 201);
     }
 
     /**
@@ -41,9 +51,15 @@ class ApplianceController extends Controller
      */
     public function show(string $id): JsonResponse
     {
-        $appliance = Appliance::findOrFail($id);
+        $appliance = DB::table('appliances')
+            ->join('brands', 'appliances.brand_id', '=', 'brands.id')
+            ->select('appliances.*', 'brands.name as brand')
+            ->where('appliances.id', '=', $id)
+            ->get();
 
-        return response()->json($appliance, 200);
+        return ($appliance->all()) ?
+            response()->json($appliance->first(), 200) :
+            response()->json([], 404);
     }
 
     /**
@@ -58,7 +74,13 @@ class ApplianceController extends Controller
         $appliance = Appliance::findOrFail($id);
         $appliance->update($request->all());
 
-        return response()->json($appliance, 200);
+        $appliance = DB::table('appliances')
+            ->join('brands', 'appliances.brand_id', '=', 'brands.id')
+            ->select('appliances.*', 'brands.name as brand')
+            ->where('appliances.id', '=', $id)
+            ->get();
+
+        return response()->json($appliance->first(), 200);
     }
 
     /**
