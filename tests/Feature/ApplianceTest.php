@@ -30,7 +30,7 @@ class ApplianceTest extends TestCase
             );
     }
 
-    public function test_missed_field_required_expect_error_422_and_correctly_message(): void
+    public function test_missed_name_field_required_expect_error_422_and_correctly_message(): void
     {
         $response = $this->json('POST', 'api/appliance', [
             // 'name'            => 'Geladeira Frost Free',
@@ -47,5 +47,40 @@ class ApplianceTest extends TestCase
     {
         $response = $this->get('api/appliance');
         $response->assertOk();
+    }
+
+    public function test_update_appliance_expect_status_code_200(): void
+    {
+        $response = $this->json('PUT', 'api/appliance/1', [
+            'name'            => 'Cooktop 05 bocas',
+            'description'     => 'Elétrico.',
+            'eletric_tension' => '110v',
+            'brand_id'        => 2,
+        ]);
+
+        $response->assertStatus(200);
+
+        $response
+            ->assertJson(
+                fn (AssertableJson $json) => $json
+                    ->where('name', 'Cooktop 05 bocas')
+                    ->where('description', 'Elétrico.')
+                    ->where('eletric_tension', '110v')
+                    ->where('brand_id', 2)
+                    ->etc()
+            );
+
+    }
+
+    public function test_fail_update_not_exists_appliance_expect_status_code_404(): void
+    {
+        $response = $this->json('PUT', 'api/appliance/11000', [
+            'name'            => 'Cooktop 05 bocas',
+            'description'     => 'Elétrico.',
+            'eletric_tension' => '110v',
+            'brand_id'        => 2,
+        ]);
+
+        $response->assertStatus(404);
     }
 }

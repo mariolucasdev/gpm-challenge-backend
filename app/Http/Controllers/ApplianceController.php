@@ -20,14 +20,6 @@ class ApplianceController extends Controller
         return response()->json($appliance, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
    /**
     * Store appliance
     *
@@ -50,19 +42,18 @@ class ApplianceController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update appliance
+     *
+     * @param StoreApplianceRequest $request
+     * @param string $id
+     * @return JsonResponse
      */
-    public function edit(string $id)
+    public function update(StoreApplianceRequest $request, string $id): JsonResponse
     {
-        //
-    }
+        $appliance = Appliance::findOrFail($id);
+        $appliance->update($request->all());
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return response()->json($appliance, 200);
     }
 
     /**
