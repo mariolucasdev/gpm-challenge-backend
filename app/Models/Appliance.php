@@ -15,4 +15,9 @@ class Appliance extends Model
         'eletric_tension',
         'brand_id',
     ];
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }
